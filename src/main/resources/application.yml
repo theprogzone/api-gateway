@@ -9,12 +9,23 @@ spring:
         - id: product-service
           uri: lb://product-service
           predicates:
-          - Path=/product/**
+            - Path=/product/**
+          filters:
+            - AuthenticationFilter
 
         - id: inventory-service
           uri: lb://inventory-service
           predicates:
             - Path=/inventory/**
+          filters:
+            - AuthenticationFilter
+
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/auth/**
+          filters:
+            - AuthenticationFilter
 
 eureka:
   client:
