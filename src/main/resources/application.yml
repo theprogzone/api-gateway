@@ -27,6 +27,13 @@ spring:
           filters:
             - AuthenticationFilter
 
+        - id: order-service
+          uri: lb://order-service
+          predicates:
+            - Path=/order/**
+          filters:
+            - AuthenticationFilter
+
 eureka:
   client:
     serviceUrl:
